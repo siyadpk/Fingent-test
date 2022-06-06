@@ -1,0 +1,43 @@
+<div style="display:flex; align-items:center; flex-direction: column;margin-top: 12em;">
+    <p class="text-heading">Registration Form</p>
+    <form [formGroup]="form" (ngSubmit)="submit()" style="    padding: 2em;
+border: 1px solid;
+border-radius: 10px;">
+
+
+        <div class="input-field-container">
+            <mat-form-field appearance="fill">
+                <mat-label>First name </mat-label>
+                <input matInput type="text" formControlName="firstName" placeholder="Please enter first name">
+                <mat-error *ngIf="form.controls['firstName'].invalid">{{ValidationMessage.mandatoryError('First name')}}</mat-error>
+            </mat-form-field>
+        </div>
+        <div class="input-field-container">
+            <mat-form-field appearance="fill">
+                <mat-label>Last name</mat-label>
+                <input matInput type="text" formControlName="lastName" placeholder="Please enter last name">
+                <mat-error *ngIf="form.controls['lastName'].invalid">{{ValidationMessage.mandatoryError('Last name')}}</mat-error>
+            </mat-form-field>
+        </div>
+        <div class="input-field-container">
+            <mat-form-field appearance="fill">
+                <mat-label>Email</mat-label>
+                <input matInput type="email" formControlName="email" placeholder="Please enter email">
+                <mat-error *ngIf="form.controls['email'].invalid">{{
+                    form.controls['email'].errors?.['required']?
+                    ValidationMessage.mandatoryError('Email'):'Please enter a valid email'}}</mat-error>
+            </mat-form-field>
+        </div>
+        <div class="input-field-container">
+            <mat-form-field appearance="fill">
+                <mat-label>Phone number </mat-label>
+                <input matInput type="number" formControlName="phoneNumber" placeholder="Please enter phone number">
+                <mat-error *ngIf="form.controls['phoneNumber'].invalid">{{
+                    form.controls['phoneNumber'].errors?.['required']?
+                    ValidationMessage.mandatoryError('Phone number'):'Please enter a valid phone number'}}</mat-error>
+            </mat-form-field>
+        </div>
+        <button mat-raised-button color="primary" type="submit">Submit</button>
+
+    </form>
+</div>
